@@ -24,6 +24,21 @@ async function getBands() {
   }
 }
 
+// this function gets the band name
+
+async function getBandName() {
+  if (DEBUG) console.log("getBandName called");
+  const client = await pool.connect();
+  try {
+    const res = await client.query('SELECT band_name FROM bands');
+    return res.rows;
+  }
+  finally {
+    client.release();
+  }
+}
+
+
 //this function gets a band by its id
 
 async function getBandByBandId(id) {
@@ -97,6 +112,7 @@ module.exports = {
   updateBand,
   deleteBand,
   deleteBandById,
+  getBandName
 };
 
 

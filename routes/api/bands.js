@@ -1,8 +1,3 @@
-// this file is the route for the bands api
-// it uses the bands route
-// the bands route is in the parent directory
-// the bands route is in the routes directory
-
 const express = require('express');
 const router = express.Router();
 const bandsDal = require('../../services/pg.bands.dal');

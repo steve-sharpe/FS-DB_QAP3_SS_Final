@@ -1,0 +1,35 @@
+<!-- This page is a form to enter a new band into the database. It is a simple form with a text input for the band name and a submit button. The form is submitted to the /bands route with a POST request. The form is styled with Bootstrap classes to make it look nice.Enter all the fields except id. fields are band_name, band_singer, band_label, number_albums and favourite_album -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <%- include('./partials/head.ejs') %>
+
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <div class="centered-content">
+            <h1>Add a new band</h1>
+            <form action="/bands" method="POST">
+                <div class="form-group">
+                    <label for="band_name">Band Name</label>
+                    <input type="text" class="form-control" id="band_name" name="band_name" placeholder="Enter band name">
+                    <input type="text" class="form-control" id="band_singer" name="band_singer" placeholder="Enter singer name">
+                    <input type="text" class="form-control" id="band_label" name="band_label" placeholder="Enter label name">
+                    <input type="text" class="form-control" id="number_albums" name="number_albums" placeholder="Enter number of albums">
+                    <input type="text" class="form-control" id="favourite_album" name="favourite_album" placeholder="Enter favourite album">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </form>
+        </div>
+
+    
+    
+</body>
+</html>

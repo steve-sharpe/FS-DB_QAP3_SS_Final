@@ -7,3 +7,10 @@ VALUES
     ('Alice in Chains', 'Layne Staley', 'Columbia', 5, 'Dirt'),
     ('Stone Temple Pilots', 'Scott Weiland', 'Atlantic', 6, 'Core'),
     ('Mudhoney', 'Mark Arm', 'Sub Pop', 10, 'Superfuzz Bigmuff');
+    ('Foo Fighters', 'Dave Grohl', 'RCA', 9, 'The Colour and the Shape'),
+    ('Queens of the Stone Age', 'Josh Homme', 'Interscope', 7, 'Songs for the Deaf'),
+    ('The Smashing Pumpkins', 'Billy Corgan', 'Virgin', 5, 'Siamese Dream'),
+    ('Radiohead', 'Thom Yorke', 'Parlophone', 8, 'OK Computer'),
+    ('Pixies', 'Black Francis', '4AD', 4, 'Doolittle'),
+    
+   

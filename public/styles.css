@@ -4,24 +4,59 @@ body {
   background-color: #f4f4f4;
 }
 
-form {
-  max-width: 80%;
-  margin: auto;
-  background: #fff;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+
 
 .bands table {
-  width: 100%;
+  width: 80%;
   border-collapse: collapse;
+  /* Removed display: flex; */
+  justify-content: center; /* This line can also be removed as it's now irrelevant */
+  align-items: center; /* This line can also be removed as it's now irrelevant */
+  text-align: center; /* Ensures the text inside the elements is also centered */
+  margin: 0 auto; /* Centers the table on the page */
 }
 
-.bands th, .bands td {
-  border: 1px solid #ddd;
-  padding: 8px;
+.bands {
+  background-color: #f8f9fa; /* Light grey background for the table */
+  color: #333; /* Dark grey text color for contrast */
 }
 
-.bands tr:nth-child(even){background-color: #f2f2f2;}
+.bands th {
+  background-color: #007bff; /* Blue background for table headers */
+  color: #ffffff; /* White text color for headers */
+  padding: 10px; /* Adjust padding for table headers */
+}
 
-.bands tr:hover {background-color: #ddd;}
+.bands td {
+  padding: 10px; /* Adjust padding for table cells */
+}
+
+.bands tr:nth-child(odd) {
+  background-color: #ffffff; /* White for odd rows */
+}
+
+.bands tr:nth-child(even) {
+  background-color: #f2f2f2; /* Light grey for even rows */
+}
+
+.bands tr:hover {
+  background-color: #d1e0e0; /* Light blue for hover effect */
+}
+footer {
+  display: block;
+  justify-content: center; /* Centers items on the main-axis (horizontally for row direction) */
+  align-items: center; /* Centers items on the cross-axis (vertically for row direction) */
+  text-align: center; /* Ensures the text inside the elements is also centered */
+  width: 100%; /* Ensures header and footer take up the full width */
+  padding: 20px;
+}
+
+nav {
+  display: block;
+  justify-content: center; /* Centers items on the main-axis */
+  align-items: center; /* Centers items on the cross-axis */
+  text-align: center; /* Ensures the text inside the elements is also centered */
+  width: 100%; /* Ensures nav takes up the full width */
+  flex-direction: row; /* Keeps child elements in a row but ensures nav is on its own line */
+  padding-bottom: 50px;
+}

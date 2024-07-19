@@ -6,6 +6,7 @@
 const express = require('express');
 const router = express.Router();
 const bandsDal = require('../../services/pg.bands.dal');
+const DEBUG = true;
 
 router.get('/', async (req, res) => {
     try {
@@ -51,13 +52,18 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+// make a delete route with band_id as the PK
+
 router.delete('/:id', async (req, res) => {
     try {
-        await bandsDal.deleteBand(req.params.id);
-        res.status(200).json({message: "Band deleted"});
-    } catch (err) {
-        console.error("Error deleting band:", err);
-        res.status(503).json({message: "Service Unavailable", error: err.message});
+        const { id } = req.params;
+        await bandsDal.deleteBandById(id);
+        // Render the bandsDelete.ejs template
+        res.render('bandsDelete', { message: "Band successfully deleted." });
+    } catch (error) {
+        console.error("Error deleting band:", error);
+        // Render the bandsDelete.ejs template with error information
+        res.render('bandsDelete', { message: "Service Unavailable", error: error.message });
     }
 });
 

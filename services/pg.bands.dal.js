@@ -5,6 +5,8 @@
 //addBand - adds a band
 //updateBand - updates a band
 //deleteBand - deletes a band
+//deleteBandById - deletes a band by its id
+// band_id is the primary key
 
 //this file uses the pg module to interact with the database
 //it uses the Pool class to interact
@@ -115,8 +117,22 @@ var deleteBand = function(id) {
       }
     });
   }
+  );
+}
 
-  );  
+var deleteBandById = function(id) {
+  if(DEBUG) console.log("bands.pg.dal.deleteBandById()");
+  return new Promise(function(resolve, reject) {
+    const sql = "DELETE FROM public.bands WHERE band_id = $1;";
+    query(sql, [id], (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result.rows);
+      }
+    });
+  }
+  );
 }
 
 module.exports = {
@@ -125,7 +141,8 @@ module.exports = {
   addBand: addBand,
   putBand: putBand,
   patchBand: patchBand,
-  deleteBand: deleteBand
+  deleteBand: deleteBand,
+  deleteBandById: deleteBandById
 };
 
 

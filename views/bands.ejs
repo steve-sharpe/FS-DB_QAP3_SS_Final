@@ -3,39 +3,41 @@
 	<body>
 		<%- include('./partials/nav.ejs') %>
 		<div class="bands content">
-			<table>
-				<thead>
-					<tr>
-						<th>Band Name</th>
-						<th>Singer</th>
-						<th>Label</th>
-						<th>Number of Albums</th>
-						<th>Favourite Album</th>
-						<th>Delete Band</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% if (bands.length > 0) { bands.forEach(band => { %>
-					<tr>
-						<td><%= band.band_name %></td>
-						<td><%= band.band_singer %></td>
-						<td><%= band.band_label %></td>
-						<td><%= band.number_albums %></td>
-						<td><%= band.favourite_album %></td>
-						<!-- Delete Form -->
-						<td>
-							<form
-								action="/bands/<%= band.band_id %>?_method=DELETE"
-								method="POST"
-							>
-								<button type="submit">Delete</button>
-							</form>
-						</td>
-					</tr>
-
-					<% }) } %>
-				</tbody>
-			</table>
+		
+				<table>
+					<thead>
+						<tr>
+							<th>Band ID</th>
+							<th>Band Name</th>
+							<th>Singer</th>
+							<th>Label</th>
+							<th>Number of Albums</th>
+							<th>Favourite Album</th>
+							<th>Delete Band</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% if (bands.length > 0) { bands.forEach(band => { %>
+						<tr>
+							<td><%= band.band_id %></td>
+							<td><%= band.band_name %></td>
+							<td><%= band.band_singer %></td>
+							<td><%= band.band_label %></td>
+							<td><%= band.number_albums %></td>
+							<td><%= band.favourite_album %></td>
+							<!-- Delete Button -->
+							<td>
+								
+									<form action="/bands/<%= band.band_id %>?_method=DELETE" method="POST">
+										<button type="submit">Delete</button>
+									</form>
+							
+							</td>
+						</tr>
+						<% }) } %>
+					</tbody>
+				</table>
+			</form>
 		</div>
 	</body>
 	<%- include('./partials/foot.ejs') %>

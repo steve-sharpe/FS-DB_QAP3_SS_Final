@@ -1,3 +1,18 @@
+//this is the file to interact with the pgadmin database
+//it has the following functions:
+//getBands - gets all the bands
+//getBandByBandId - gets a band by its id
+//addBand - adds a band
+//updateBand - updates a band
+//deleteBand - deletes a band
+
+//this file uses the pg module to interact with the database
+//it uses the Pool class to interact
+//the Pool class is a connection pool
+//it is used to manage multiple connections to the database
+
+const DEBUG = true;
+
 const Pool = require('pg').Pool;
 const pool = new Pool({
   user: 'postgres',
@@ -8,10 +23,7 @@ const pool = new Pool({
 });
 
 
-
-
 const query = function(sql, params, callback) {
-  if(DEBUG) console.log("bands.pg.dal.query()");
   pool.query(sql, params, callback);
 };
 
@@ -115,7 +127,6 @@ module.exports = {
   patchBand: patchBand,
   deleteBand: deleteBand
 };
-
 
 
 

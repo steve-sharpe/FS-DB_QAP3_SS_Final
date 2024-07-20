@@ -2,6 +2,18 @@ body {
   font-family: Arial, sans-serif;
   padding: 20px;
   background-color: #f4f4f4;
+  color: #333;
+}
+
+h1 {
+  color: #0066cc;
+  text-align: center;
+}
+
+p {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 10px;
 }
 
 
@@ -14,9 +26,7 @@ body {
   border-radius: 8px;
 }
 
-h1 {
-  color: #333;
-}
+
 
 .form-group {
   margin-bottom: 20px;
@@ -49,6 +59,7 @@ h1 {
 .btn-primary:hover {
   background-color: #0056b3;
 }
+
 
 
 

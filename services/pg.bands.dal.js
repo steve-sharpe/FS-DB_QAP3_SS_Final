@@ -10,99 +10,94 @@ const pool = new Pool({
 });
 
 
-//this function gets all the bands
+//this function gets all the bands using promises with debug mode
 
-async function getBands() {
-  if (DEBUG) console.log("getBands called");
-  const client = await pool.connect();
-  try {
-    const res = await client.query('SELECT * FROM bands');
-    return res.rows;
-  }
-  finally {
-    client.release();
-  }
+function getBands() {
+  if(DEBUG) console.log("getBands()");
+  return new Promise(function(resolve, reject) {
+    const sql = "SELECT * FROM bands ORDER BY band_name ASC"
+    pool.query(sql, [], (err, result) => {
+      if (err) {
+        // logging should go here
+        if(DEBUG) console.log(err);
+        reject(err);
+      } else {
+        resolve(result.rows);
+      }
+    }); 
+  }); 
+};
+
+//this function gets a single band by id using promises with debug mode
+
+function getBandByBandId(id) {
+  if(DEBUG) console.log("getBandByBandId()");
+  return new Promise(function(resolve, reject) {
+    const sql = "SELECT * FROM bands WHERE band_id = $1";
+    pool.query(sql, [id], (err, result) => {
+      if (err) {
+        // logging should go here
+        if(DEBUG) console.log(err);
+        reject(err);
+      } else {
+        resolve(result.rows);
+      }
+    });
+  });
+};
+
+//this function adds a band using promises with debug mode
+
+function addBand(band) {
+  if(DEBUG) console.log("addBand()");
+  return new Promise(function(resolve, reject) {
+    const sql = "INSERT INTO bands (band_name, band_singer, band_label, number_albums, favourite_album) VALUES ($1, $2, $3, $4, $5);";
+    pool.query(sql, [band.band_name, band.band_singer, band.band_label, band.number_albums, band.favourite_album], (err, result) => {
+      if (err) {
+        // logging should go here
+        if(DEBUG) console.log(err);
+        reject(err);
+      } else {
+        resolve(result.rows);
+      }
+    });
+  });
 }
 
-// this function gets the band name
+//this function updates a band using promises with debug mode
 
-async function getBandName() {
-  if (DEBUG) console.log("getBandName called");
-  const client = await pool.connect();
-  try {
-    const res = await client.query('SELECT band_name FROM bands');
-    return res.rows;
-  }
-  finally {
-    client.release();
-  }
+function updateBand(band) {
+  if(DEBUG) console.log("updateBand()");
+  return new Promise(function(resolve, reject) {
+    const sql = "UPDATE bands SET band_name = $1, band_singer = $2, band_label = $3, number_albums = $4, favourite_album = $5 WHERE band_id = $6";
+    pool.query(sql, [band.band_name, band.band_singer, band.band_label, band.number_albums, band.favourite_album, band.band_id], (err, result) => {
+      if (err) {
+        // logging should go here
+        if(DEBUG) console.log(err);
+        reject(err);
+      } else {
+        resolve(result.rows);
+      }
+    });
+  });
 }
 
+//this function deletes a band using promises with debug mode
 
-//this function gets a band by its id
-
-async function getBandByBandId(id) {
-  if (DEBUG) console.log("getBandByBandId called");
-  const client = await pool.connect();
-  try {
-    const res = await client.query('SELECT * FROM bands WHERE band_id = $1', [id]);
-    return res.rows;
-  }
-  finally {
-    client.release();
-  }
-}
-
-//this function adds a band
-
-async function addBand(band_name, band_singer, band_label, number_albums, favourite_album) {
-  if (DEBUG) console.log("addBand called");
-  const client = await pool.connect();
-  try {
-    await client.query('INSERT INTO bands (band_name, band_singer, band_label, number_albums, favourite_album) VALUES ($1, $2, $3, $4, $5)', [band_name, band_singer, band_label, number_albums, favourite_album]);
-  }
-  finally {
-    client.release();
-  }
-}
-
-//this function updates a band
-
-async function updateBand(id, band_name, band_singer, band_label, number_albums, favourite_album) {
-  if (DEBUG) console.log("updateBand called");
-  const client = await pool.connect();
-  try {
-    await client.query('UPDATE bands SET band_name = $1, band_singer = $2, band_label = $3, number_albums = $4, favourite_album = $5 WHERE band_id = $6', [band_name, band_singer, band_label, number_albums, favourite_album, id]);
-  }
-  finally {
-    client.release();
-  }
-}
-
-//this function deletes a band
-
-async function deleteBand(band) {
-  if (DEBUG) console.log("deleteBand called");
-  const client = await pool.connect();
-  try {
-    await client.query('DELETE FROM bands WHERE band_id = $1', [band]);
-  }
-  finally {
-    client.release();
-  }
-}
-
-//this function deletes a band by its id
-
-async function deleteBandById(id) {
-  if (DEBUG) console.log("deleteBandById called");
-  const client = await pool.connect();
-  try {
-    await client.query('DELETE FROM bands WHERE band_id = $1', [id]);
-  }
-  finally {
-    client.release();
-  }
+function deleteBandByID(id) {
+  if(DEBUG) console.log("deleteBand()");
+  return new Promise(function(resolve, reject) {
+    const sql = "DELETE FROM bands WHERE band_id = $1";
+    pool.query(sql, [id], (err, result) => {
+      if (err) {
+        // logging should go here
+        if(DEBUG) console.log(err);
+        reject(err);
+      } else {
+        resolve(result.rows);
+      }
+    });
+  });
 }
 
 module.exports = {
@@ -110,9 +105,5 @@ module.exports = {
   getBandByBandId,
   addBand,
   updateBand,
-  deleteBand,
-  deleteBandById,
-  getBandName
+  deleteBandByID
 };
-
-

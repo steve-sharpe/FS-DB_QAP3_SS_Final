@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Edit Band</title>
+	</head>
+	<%- include('./partials/head.ejs') %>
+	<body>
+		<%- include('./partials/nav.ejs') %>
+		<div class="centered-content">
+			<h1>EDIT BAND</h1>
+			<form action="/bands/" method="post">
+				<input type="hidden" name="_method" value="PATCH" />
+				<input type="hidden" name="band_id" />
+				<div class="form-group">
+					<label for="band_name">Band Name</label>
+					<input
+						type="text"
+						class="form-control"
+						id="band_name"
+						name="band_name"
+					/>
+				</div>
+				<div class="form-group">
+					<label for="band_singer">Singer</label>
+					<input
+						type="text"
+						class="form-control"
+						id="band_singer"
+						name="band_singer"
+					/>
+				</div>
+				<div class="form-group">
+					<label for="band_label">Label</label>
+					<input
+						type="text"
+						class="form-control"
+						id="band_label"
+						name="band_label"
+					/>
+				</div>
+
+				<div class="form-group">
+					<label for="number_albums">Number of Albums</label>
+					<input
+						type="text"
+						class="form-control"
+						id="number_albums"
+						name="number_albums"
+					/>
+
+					<div class="form-group">
+						<label for="favourite_album">Favourite Album</label>
+						<input
+							type="text"
+							class="form-control"
+							id="favourite_album"
+							name="favourite_album"
+						/>
+					</div>
+
+				<button type="submit">Update Band</button>
+			</form>
+		</div>
+	</body>
+</html>

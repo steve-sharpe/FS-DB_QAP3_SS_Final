@@ -2,11 +2,11 @@ const router = require('express').Router();
 const DEBUG = true;
 
 if(DEBUG) {
-    console.log('ROUTE: /bandsAdd');
+    console.log('ROUTE: /bandsEdit');
 }
 
 router.get('/', (req, res) => {
-    res.render('bandsAdd');
+    res.render('bandsEdit');
     });
 
 module.exports = router;

@@ -27,13 +27,32 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.get('/edit-band/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const band = await getBandById(id); // Fetch the band data using its ID
+
+        if (!band) {
+            return res.status(404).send('Band not found');
+        }
+
+        // Render the bandsEdit.ejs view, passing in the band data
+        res.render('bandsEdit', { band });
+    } catch (error) {
+        console.error('Error fetching band:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 router.post('/', async (req, res) => {
     try {
         await bandsDal.addBand(req.body.band_name, req.body.band_singer, req.body.band_label, req.body.number_albums, req.body.favourite_album);
-        res.status(201).json({message: "Band added"});
+        // Render the bandsAddLanding.ejs view with a message
+        res.render('bandsAddLanding', { message: "Band added successfully." });
     } catch (err) {
         console.error("Error adding band:", err);
         res.status(503).json({message: "Service Unavailable", error: err.message});
+
     }
 });
 
@@ -52,7 +71,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        await bandsDal.deleteBandById(id);
+        await bandsDal.deleteBandByID(id);
         // Render the bandsDelete.ejs template
         res.render('bandsDelete', { message: "Band successfully deleted." });
     } catch (error) {

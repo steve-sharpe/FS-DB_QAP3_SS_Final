@@ -33,14 +33,14 @@ function getBands() {
 function getBandByBandId(id) {
   if(DEBUG) console.log("getBandByBandId()");
   return new Promise(function(resolve, reject) {
-    const sql = "SELECT * FROM bands WHERE band_id = $1";
+    const sql = "SELECT band_id AS _id, band_name, band_singer, band_label, number_albums, favourite_album FROM bands WHERE band_id = $1";
     pool.query(sql, [id], (err, result) => {
       if (err) {
         // logging should go here
         if(DEBUG) console.log(err);
         reject(err);
       } else {
-        resolve(result.rows);
+        resolve(result.rows[0]);
       }
     });
   });
@@ -48,11 +48,11 @@ function getBandByBandId(id) {
 
 //this function adds a band using promises with debug mode
 
-function addBand(band) {
+function addBand(band_name, band_singer, band_label, number_albums, favourite_album) {
   if(DEBUG) console.log("addBand()");
   return new Promise(function(resolve, reject) {
     const sql = "INSERT INTO bands (band_name, band_singer, band_label, number_albums, favourite_album) VALUES ($1, $2, $3, $4, $5);";
-    pool.query(sql, [band.band_name, band.band_singer, band.band_label, band.number_albums, band.favourite_album], (err, result) => {
+    pool.query(sql, [band_name, band_singer, band_label, number_albums, favourite_album], (err, result) => {
       if (err) {
         // logging should go here
         if(DEBUG) console.log(err);

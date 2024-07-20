@@ -16,6 +16,8 @@ const bandsRouter = require('./routes/api/bands');
 const apiRouter = require('./routes/api');
 const bandsAddRouter = require('./routes/api/bandsAdd');
 const bandsEditRouter = require('./routes/api/bandsEdit');
+const { getBandByBandId } = require('./services/pg.bands.dal');
+const { addBand } = require('./services/pg.bands.dal');
 
 app.use('/bands', bandsRouter);
 app.use('/api', apiRouter);
@@ -31,21 +33,24 @@ app.get('/bands/:band_id', async (req, res) => {
     res.render('bandsEdit');
     });
 
-app.get('/bands/:band_id', async (req, res) => {
+app.get('/bands/edit/:band_id', async (req, res) => {
+    const bandId = req.params.band_id;
+    const band = await getBandByBandId(bandId);
+    res.render('bandsEdit', { band });
+    });
+
+app.post('/band', async (req, res) => {
+    const { band_name, band_singer, band_label, number_albums, favourite_album } = req.body;
+    // Ensure band_name is not null or undefined
+    if (!band_name) {
+        return res.status(400).send("Band name is required.");
+    }
     try {
-        // Assuming getBandById is a function that fetches band information by ID
-        const bandInfo = await getBandByBandId(req.params.band_id);
-        if (!bandInfo) {
-            // Handle case where no band is found for the given ID
-            res.status(404).send('Band not found');
-            return;
-        }
-        // Pass the fetched band information to the bandsEdit view
-        res.render('bandsEdit', { band: bandInfo });
+        await addBand(band_name, band_singer, band_label, number_albums, favourite_album);
+        res.render('bandsAdd');
     } catch (error) {
-        // Handle potential errors, such as database issues
-        console.error('Error fetching band information:', error);
-        res.status(500).send('Internal Server Error');
+        console.error("Error adding band:", error);
+        res.status(500).send("Error adding band.");
     }
 });
 

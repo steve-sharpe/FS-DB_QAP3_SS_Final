@@ -59,7 +59,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         await bandsDal.updateBand(req.params.id, req.body.band_name, req.body.band_singer, req.body.band_label, req.body.number_albums, req.body.favourite_album);
-        res.status(200).json({message: "Band updated"});
+        res.render
     } catch (err) {
         console.error("Error updating band:", err);
         res.status(503).json({message: "Service Unavailable", error: err.message});

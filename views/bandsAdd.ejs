@@ -1,33 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
-    <%- include('./partials/head.ejs') %>
-
-    <body>
-        <%- include('./partials/nav.ejs') %>
-        <div class="centered-content">
-            <h1>Add a new band</h1>
-            <form action="/bands" method="POST">
-                <div class="form-group">
-                    <label for="band_name">Band Name</label>
-                    <input type="text" class="form-control" id="band_name" name="band_name" placeholder="Enter band name">
-                    <input type="text" class="form-control" id="band_singer" name="band_singer" placeholder="Enter singer name">
-                    <input type="text" class="form-control" id="band_label" name="band_label" placeholder="Enter label name">
-                    <input type="text" class="form-control" id="number_albums" name="number_albums" placeholder="Enter number of albums">
-                    <input type="text" class="form-control" id="favourite_album" name="favourite_album" placeholder="Enter favourite album">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-
-            </form>
-        </div>
-
-    
-    
-</body>
+	<body>
+		<div class="main-container">
+			<%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
+			<div class="content">
+				<form action="/band" method="POST">
+					<div class="form-group">
+						<label for="band_name">Band Name</label>
+						<input
+							type="text"
+							class="form-control"
+							id="band_name"
+							name="band_name"
+							placeholder="Enter band name"
+						/>
+						<label for="band_singer">Singer Name</label>
+						<input
+							type="text"
+							class="form-control"
+							id="band_singer"
+							name="band_singer"
+							placeholder="Enter singer name"
+						/>
+						<label for="band_label">Label Name</label>
+						<input
+							type="text"
+							class="form-control"
+							id="band_label"
+							name="band_label"
+							placeholder="Enter label name"
+						/>
+						<label for="number_albums">Number of Albums</label>
+						<input
+							type="number"
+							class="form-control"
+							id="number_albums"
+							name="number_albums"
+							placeholder="Enter number of albums"
+						/>
+						<label for="favourite_album">Favourite Album</label>
+						<input
+							type="text"
+							class="form-control"
+							id="favourite_album"
+							name="favourite_album"
+							placeholder="Enter favourite album"
+						/>
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+	<%- include('./partials/foot.ejs') %>
 </html>

@@ -10,7 +10,7 @@
 			<%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
 			<div class="content">
 				<h1>EDIT BAND</h1>
-					<form action="/bands/edit/<%= band.band_id %>" method="POST">
+					<form action="/update-band/<%= band.band_id %>" method="POST">
 						<div class="form-group">
 							<input
 								type="text"

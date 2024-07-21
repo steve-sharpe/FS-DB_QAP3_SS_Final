@@ -18,6 +18,7 @@ const bandsAddRouter = require('./routes/api/bandsAdd');
 const bandsEditRouter = require('./routes/api/bandsEdit');
 const { getBandByBandId } = require('./services/pg.bands.dal');
 const { addBand } = require('./services/pg.bands.dal');
+const { updateBand } = require('./services/pg.bands.dal');
 
 app.use('/bands', bandsRouter);
 app.use('/api', apiRouter);
@@ -39,6 +40,17 @@ app.get('/bands/edit/:band_id', async (req, res) => {
     res.render('bandsEdit', { band });
     });
 
+app.post('/update-band', async (req, res) => {
+    const { band_id, band_name, band_singer, band_label, number_albums, favourite_album } = req.body;
+    try {
+        await updateBand(band_id, band_name, band_singer, band_label, number_albums, favourite_album);
+        res.redirect('/bands'); // Redirect to a page listing all bands, for example
+    } catch (error) {
+        console.error("Error updating band:", error);
+        res.status(500).send("Error updating the band.");
+    }
+    });
+
 app.post('/band', async (req, res) => {
     const { band_name, band_singer, band_label, number_albums, favourite_album } = req.body;
     // Ensure band_name is not null or undefined
@@ -47,7 +59,7 @@ app.post('/band', async (req, res) => {
     }
     try {
         await addBand(band_name, band_singer, band_label, number_albums, favourite_album);
-        res.render('bandsAdd');
+        res.render('bandsAddLanding');
     } catch (error) {
         console.error("Error adding band:", error);
         res.status(500).send("Error adding band.");

@@ -51,15 +51,14 @@ router.post('/', async (req, res) => {
         res.render('bandsAddLanding', { message: "Band added successfully." });
     } catch (err) {
         console.error("Error adding band:", err);
-        res.status(503).json({message: "Service Unavailable", error: err.message});
-
+        res.render('bandsDelete', { message: "Error deleting band." });
     }
 });
 
 router.put('/:id', async (req, res) => {
     try {
         await bandsDal.updateBand(req.params.id, req.body.band_name, req.body.band_singer, req.body.band_label, req.body.number_albums, req.body.favourite_album);
-        res.render
+        res.render('bandsEdit', { message: "Band updated successfully." });
     } catch (err) {
         console.error("Error updating band:", err);
         res.status(503).json({message: "Service Unavailable", error: err.message});
@@ -77,7 +76,7 @@ router.delete('/:id', async (req, res) => {
     } catch (error) {
         console.error("Error deleting band:", error);
         // Render the bandsDelete.ejs template with error information
-        res.render('bandsDelete', { message: "Service Unavailable", error: error.message });
+        res.render('bandsDelete', { message: "Error deleting band." });
     }
 });
 

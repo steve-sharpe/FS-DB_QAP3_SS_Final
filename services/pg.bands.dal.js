@@ -71,7 +71,7 @@ function addBand(band_name, band_singer, band_label, number_albums, favourite_al
 async function updateBand(band_id, band_name, band_singer, band_label, number_albums, favourite_album) {
   if(DEBUG) console.log("updateBand()");
   return new Promise(function(resolve, reject) {
-    const sql = "UPDATE bands SET band_name = $2, band_singer = $3, band_label = $4, number_albums = $5, favourite_album = $6 WHERE band_id = $1";
+    const sql = "UPDATE public.bands SET band_name = $2, band_singer = $3, band_label = $4, number_albums = $5, favourite_album = $6 WHERE band_id = $1";
     if(DEBUG) console.log(`Executing SQL: ${sql} with values ${[band_id, band_name, band_singer, band_label, number_albums, favourite_album]}`);
     pool.query(sql, [band_id, band_name, band_singer, band_label, number_albums, favourite_album], (err, result) => {
       if (err) {

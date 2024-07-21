@@ -31,6 +31,7 @@ app.use('/bandsAddLanding', bandsAddRouter);
 
 
 
+
 app.get('/', (req, res) => {
     res.render('index.ejs');
     });

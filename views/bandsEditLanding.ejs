@@ -1,9 +1,18 @@
 <html lang="en">
+	<head>
+		<%- include('./partials/head.ejs') %>
+		<link rel="stylesheet" href="/css/style.css" />
+		<!-- Assuming you have a CSS file for styling -->
+	</head>
 	<body>
 		<div class="main-container">
-			<%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
+			<%- include('./partials/nav.ejs') %>
 			<div class="content">
-				<h1>The band has been edited</h1>
+				<!-- Styling the message to match the bandsDelete page look -->
+				<div class="edit-message">
+					<h1>The band has been edited.</h1>
+					<p>You will be redirected shortly.</p>
+				</div>
 			</div>
 			<script>
 				setTimeout(function () {
@@ -11,6 +20,6 @@
 				}, 3000); // 3000 milliseconds = 3 seconds
 			</script>
 		</div>
+		<%- include('./partials/foot.ejs') %>
 	</body>
-	<%- include('./partials/foot.ejs') %>
 </html>

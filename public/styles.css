@@ -1,3 +1,11 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+
 /* Main container */
 .main-container {
   display: flex;
@@ -31,10 +39,48 @@ nav {
 footer {
   width: 100%; /* Full width */
   text-align: center; /* Center text/content */
+ /* make footer appear right below last element without floxbox */
+  margin-bottom: auto; /* Pushes footer to the bottom */
+
+
+
+
+  padding: 10px 0; /* Adds space above and below footer */
 }
+
+
 
 h1, h2 {
   justify-content: center;
+}
+
+/* Styling for main heading (h1) */
+h1 {
+  color: #333;
+  font-size: 2.5em; /* 40px */
+}
+
+/* Styling for secondary heading (h2) */
+h2 {
+  color: #555;
+  font-size: 1.75em; /* 28px */
+  margin-bottom: 20px; /* Adds space below the heading */
+}
+
+/* Styling for paragraphs */
+p {
+  
+  padding: 15px;
+  border-radius: 8px;
+
+  line-height: 1.5;
+  font-size: 1em; /* 16px */
+}
+
+/* Additional styling for the first paragraph for emphasis */
+p:first-of-type {
+  font-weight: bold;
+  color: #444;
 }
 
 .form-group {
@@ -42,12 +88,13 @@ h1, h2 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 20px 0; 
-  padding: 20px; 
-  border-radius: 8px; 
-  background-color: #f9f9f9; 
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
- }
+  margin: 20px auto; /* Center the form */
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 50%; /* Set the width to 50% */
+}
 
  .form-group label {
   display: block; /* Ensures labels take up their own line for clarity */
@@ -61,7 +108,8 @@ h1, h2 {
   margin-bottom: 20px; /* Adds space below each input, textarea, and select */
   border: 1px solid #ccc; /* Adds a subtle border */
   border-radius: 4px; /* Slightly rounds the corners */
-  width: calc(25% - 22px); /* Adjusts width to account for padding and border */
+  width: calc(50% - 22px); /* Adjusts width to account for padding and border */
+  text-align: center;
 }
 
 .form-group button {
@@ -83,37 +131,71 @@ h1, h2 {
   padding: 20px;
   border-radius: 8px;
   background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  overflow-x: auto; /* Ensures table is scrollable horizontally on smaller screens */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Increased shadow for more depth */
+  overflow-x: auto;
 }
 
 table {
-  border-collapse: collapse; /* Removes space between borders */
-  width: 100%; /* Full width of its container */
-  background-color: white; /* Background color for the table */
+  border-collapse: separate; /* Keep for spacing between rows */
+  border-spacing: 0; /* Remove space between rows for continuous border */
+  width: 100%;
+  background-color: white;
 }
 
 table th, table td {
-  text-align: left; /* Aligns text to the left */
-  padding: 12px; /* Adds padding inside table cells */
-  border-bottom: 1px solid #ccc; /* Adds a subtle border to the bottom of each cell */
+  text-align: center;
+  padding: 12px;
+  border-bottom: 1px solid #ccc; /* Existing bottom border */
+  border-right: 1px solid #ccc; /* Add similar right border to columns */
+  background-color: #ffffff; /* Ensures cell backgrounds are solid */
 }
 
 table th {
-  background-color: #007bff; /* Sets a primary color for table headers */
-  color: white; /* Sets text color to white for headers */
-  font-weight: bold; /* Makes header text bold */
+  background-color: #0066cc; /* Slightly different shade for more contrast */
+  color: white;
+  font-weight: bold;
+  position: sticky; /* Keeps the header at the top */
+  top: 0;
+  z-index: 2;
 }
 
-table tr:nth-child(even) {
-  background-color: #f2f2f2; /* Adds a zebra-striping effect to rows */
+/* Use CSS :nth-of-type to style odd and even rows differently */
+table tr:nth-of-type(odd) {
+  background-color: #f2f2f2; /* Lighter for odd rows */
+}
+
+table tr:nth-of-type(even) {
+  background-color: #e6e6e6; /* Slightly darker for even rows */
 }
 
 table tr:hover {
-  background-color: #ddd; /* Changes row background color on hover for visual feedback */
+  background-color: #d9d9d9; /* Universal hover state for better visibility */
+}
+
+/* Adjusted for more definition and visual separation */
+table td:first-child, table th:first-child {
+  border-left: 2px solid #0066cc; /* Consistent with header color */
+}
+
+table td:last-child, table th:last-child {
+  border-right: 2px solid #0066cc; /* Consistent with header color */
 }
 
 table td button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+table td button:hover {
+  background-color: #0056b3;
+}
+
+.btn {
   padding: 5px 10px; /* Adjusts padding for buttons within table cells */
   background-color: #007bff; /* Sets a primary button color */
   color: white; /* Sets button text color to white */
@@ -123,6 +205,21 @@ table td button {
   transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
 
-table td button:hover {
+.btn:hover {
   background-color: #0056b3; /* Darkens button color on hover */
+}
+
+
+
+.slideshow-container {
+  position: relative;
+  max-width: 600px; /* Adjust based on your preference */
+  margin: auto;
+  padding: 20px;
+}
+
+.slide {
+  display: none;
+  width: 100%; /* This makes the image stretch to the container's width */
+  height: auto; /* This maintains the aspect ratio */
 }

@@ -3,6 +3,7 @@
 	<body>
 		<div class="main-container">
 			<%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
+			<h1>ADD BAND</h1>
 			<div class="content">
 				<form action="/band/" method="POST">
 					<div class="form-group">
@@ -49,8 +50,8 @@
 						<button type="submit" class="btn btn-primary">Submit</button>
 					</div>
 				</form>
+				<%- include('./partials/foot.ejs') %>
 			</div>
 		</div>
 	</body>
-	<%- include('./partials/foot.ejs') %>
 </html>

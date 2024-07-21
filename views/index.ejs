@@ -4,9 +4,47 @@
 			<%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
 			<div class="content">
 				<h1>Grunge Database</h1>
+
 				<h2>What's YOUR favourite album?</h2>
+				<p>
+					Welcome to the Grunge Database! <br />
+					Here you can find information on your favourite grunge bands and
+					albums. <br />You can also add, edit, and delete entries as needed.
+				</p>
+
+				<div>
+					<div class="grunge-class slideshow-container">
+						<img
+							class="slide"
+							src="../images/grunge1.jpg"
+							alt="Grunge 1"
+							style="display: block"
+						/>
+						<img class="slide" src="../images/grunge2.jpg" alt="Grunge 2" />
+						<img class="slide" src="../images/grunge3.jpg" alt="Grunge 3" />
+						<!-- Add more images as needed -->
+					</div>
+				</div>
+				<%- include('./partials/foot.ejs') %>
 			</div>
 		</div>
+		<script>
+			let slideIndex = 0;
+			showSlides();
+
+			function showSlides() {
+				let i;
+				let slides = document.getElementsByClassName('slide');
+				for (i = 0; i < slides.length; i++) {
+					slides[i].style.display = 'none';
+				}
+				slideIndex++;
+				if (slideIndex > slides.length) {
+					slideIndex = 1;
+				}
+				slides[slideIndex - 1].style.display = 'block';
+				setTimeout(showSlides, 4000); // Change image every 4 seconds
+			}
+		</script>
 	</body>
-	<%- include('./partials/foot.ejs') %>
 </html>

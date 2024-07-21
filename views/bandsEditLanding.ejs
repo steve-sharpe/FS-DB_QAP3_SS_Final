@@ -1,0 +1,16 @@
+<html lang="en">
+	<body>
+		<div class="main-container">
+			<%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
+			<div class="content">
+				<h1>The band has been edited</h1>
+			</div>
+			<script>
+				setTimeout(function () {
+					window.location.href = '/bands'; // Adjust the path as needed
+				}, 3000); // 3000 milliseconds = 3 seconds
+			</script>
+		</div>
+	</body>
+	<%- include('./partials/foot.ejs') %>
+</html>

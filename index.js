@@ -9,6 +9,7 @@ const DEBUG = true;
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
@@ -16,14 +17,18 @@ const bandsRouter = require('./routes/api/bands');
 const apiRouter = require('./routes/api');
 const bandsAddRouter = require('./routes/api/bandsAdd');
 const bandsEditRouter = require('./routes/api/bandsEdit');
-const { getBandByBandId } = require('./services/pg.bands.dal');
+const { getBandByBandId, getBandByBandId2 } = require('./services/pg.bands.dal');
 const { addBand } = require('./services/pg.bands.dal');
 const { updateBand } = require('./services/pg.bands.dal');
+const { deleteBand } = require('./services/pg.bands.dal');
 
 app.use('/bands', bandsRouter);
 app.use('/api', apiRouter);
 app.use('/bandsAdd', bandsAddRouter);
 app.use('/bandsEdit', bandsEditRouter);
+app.use('/bandsEditLanding', bandsEditRouter);
+app.use('/bandsAddLanding', bandsAddRouter);
+
 
 
 app.get('/', (req, res) => {
@@ -48,6 +53,17 @@ app.post('/update-band', async (req, res) => {
     } catch (error) {
         console.error("Error updating band:", error);
         res.status(500).send("Error updating the band.");
+    }
+    });
+
+app.delete('/bands/:band_id', async (req, res) => {
+    const bandId = req.params.band_id;
+    try {
+        await deleteBand(bandId);
+        res.redirect('/bands'); // Redirect to a page listing all bands, for example
+    } catch (error) {
+        console.error("Error deleting band:", error);
+        res.status(500).send("Error deleting the band.");
     }
     });
 

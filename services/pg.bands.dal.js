@@ -33,7 +33,23 @@ function getBands() {
 function getBandByBandId(id) {
   if(DEBUG) console.log("getBandByBandId()");
   return new Promise(function(resolve, reject) {
-    const sql = "SELECT band_id AS _id, band_name, band_singer, band_label, number_albums, favourite_album FROM bands WHERE band_id = $1";
+    const sql = "SELECT band_id AS band_id, band_name, band_singer, band_label, number_albums, favourite_album FROM bands WHERE band_id = $1";
+    pool.query(sql, [id], (err, result) => {
+      if (err) {
+        // logging should go here
+        if(DEBUG) console.log(err);
+        reject(err);
+      } else {
+        resolve(result.rows[0]);
+      }
+    });
+  });
+};
+
+function getBandByBandId2(id) {
+  if(DEBUG) console.log("getBandByBandId2()");
+  return new Promise(function(resolve, reject) {
+    const sql = "SELECT band_id AS _id WHERE band_id = $1"; 
     pool.query(sql, [id], (err, result) => {
       if (err) {
         // logging should go here
@@ -64,32 +80,46 @@ function addBand(band_name, band_singer, band_label, number_albums, favourite_al
   });
 }
 
+
+
 //this function updates a band using promises with debug mode.
 // It is called updateBand instead of updateBandByID because the
 // function signature is different from the delete function.
 
-async function updateBand(band_id, band_name, band_singer, band_label, number_albums, favourite_album) {
+
+function updateBand(band_id, band_name, band_singer, band_label, number_albums, favourite_album) {
   if(DEBUG) console.log("updateBand()");
   return new Promise(function(resolve, reject) {
-    const sql = "UPDATE public.bands SET band_name = $2, band_singer = $3, band_label = $4, number_albums = $5, favourite_album = $6 WHERE band_id = $1";
-    if(DEBUG) console.log(`Executing SQL: ${sql} with values ${[band_id, band_name, band_singer, band_label, number_albums, favourite_album]}`);
+    const sql = "UPDATE bands SET band_name = $2, band_singer = $3, band_label = $4, number_albums = $5, favourite_album = $6 WHERE band_id = $1";
     pool.query(sql, [band_id, band_name, band_singer, band_label, number_albums, favourite_album], (err, result) => {
       if (err) {
+        // logging should go here
         if(DEBUG) console.log(err);
         reject(err);
       } else {
-        if(result.rowCount === 0) {
-          if(DEBUG) console.log("No rows updated. Check if band_id exists and matches.");
-        }
-        resolve(result.rows[0]);
+        resolve(result.rows);
       }
     });
   });
 }
 
-
-
 //this function deletes a band using promises with debug mode
+
+function deleteBand(band_id) {
+  if(DEBUG) console.log("deleteBand()");
+  return new Promise(function(resolve, reject) {
+    const sql = "DELETE FROM bands WHERE band_id = $1";
+    pool.query(sql, [band_id], (err, result) => {
+      if (err) {
+        // logging should go here
+        if(DEBUG) console.log(err);
+        reject(err);
+      } else {
+        resolve(result.rows);
+      }
+    });
+  });
+}
 
 function deleteBandByID(id) {
   if(DEBUG) console.log("deleteBand()");
@@ -110,7 +140,9 @@ function deleteBandByID(id) {
 module.exports = {
   getBands,
   getBandByBandId,
+  getBandByBandId2,
   addBand,
   updateBand,
-  deleteBandByID
+  deleteBandByID,
+  deleteBand
 };

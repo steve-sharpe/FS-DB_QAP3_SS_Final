@@ -4,14 +4,21 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Edit Band</title>
+		
 	</head>
 	<body>
 		<div class="main-container">
 			<%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
 			<div class="content">
 				<h1>EDIT BAND</h1>
-					<form action="/update-band/<%= band.band_id %>" method="POST">
+					<form action="/bands/<%= band.band_id %>?_method=PUT" method="POST">
 						<div class="form-group">
+							<input type="text"
+								name="band_id"
+								value="<%= band.band_id %>"
+								hidden
+							/>
+
 							<input
 								type="text"
 								name="band_name"

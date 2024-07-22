@@ -68,6 +68,18 @@ app.delete('/bands/:band_id', async (req, res) => {
     }
     });
 
+app.patch('/bands/:band_id', async (req, res) => {
+    const bandId = req.params.band_id;
+    const { band_name, band_singer, band_label, number_albums, favourite_album } = req.body;
+    try {
+        await updateBand(bandId, band_name, band_singer, band_label, number_albums, favourite_album);
+        res.redirect('/bands'); // Redirect to a page listing all bands, for example
+    } catch (error) {
+        console.error("Error updating band:", error);
+        res.status(500).send("Error updating the band.");
+    }
+    });
+
 app.post('/band', async (req, res) => {
     const { band_name, band_singer, band_label, number_albums, favourite_album } = req.body;
     // Ensure band_name is not null or undefined

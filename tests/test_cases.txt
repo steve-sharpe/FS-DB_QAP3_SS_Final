@@ -1,0 +1,7 @@
+1. The Grunge Database has a website that can bring up a table of all the bands in the database.
+
+2. A user can add a new band to the database using the website.
+
+3. A user can edit the band information and update the database.
+
+4. A user can delete a band from the database. 

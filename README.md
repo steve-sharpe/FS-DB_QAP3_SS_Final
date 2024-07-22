@@ -16,7 +16,7 @@ To begin using the Grunge Database, follow these installation instructions:
 
 Start by cloning the Grunge Database repository to your local machine using the following Git Hub link...
 
-https://github.com/yourusername/grunge-database.git
+https://github.com/steve-sharpe/FS-DB_QAP3_SS_Final.git
 
 To install the app, type:
 

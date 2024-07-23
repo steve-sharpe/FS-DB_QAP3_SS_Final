@@ -1,225 +1,199 @@
+/* Base styles */
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-  line-height: 1.6;
-  padding: 20px;
+  font-family: 'Arial', sans-serif; /* Default font */
+  background-color: #f4f4f4; /* Light grey background */
+  color: #333; /* Dark grey text */
+  line-height: 1.6; /* Spacing between lines */
+  padding: 20px; /* Padding around the body */
 }
 
-/* Main container */
+/* Layout for main container */
 .main-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh; /* Ensures it takes up at least the viewport height */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  min-height: 100vh; /* Minimum height of viewport */
 }
 
-/* Header */
-header {
+/* Header styles */
+header, nav, footer {
   width: 100%; /* Full width */
-  text-align: center; /* Center text/content */
+  text-align: center; /* Center align text */
 }
 
-/* Navigation */
+/* Navigation styles */
 nav {
-  width: 100%; /* Full width */
-  text-align: center; /* Center links/text */
-  margin: 10px 0; /* Adds space above and below navigation */
+  margin: 10px 0; /* Margin above and below */
 }
 
-/* Content */
+/* Content styles */
 .content {
-  flex-grow: 1; /* Takes up available space */
-  width: 90%; /* Adjust based on your design */
-  max-width: 1200px; /* Maximum width */
-  text-align: center; /* Center text/content */
+  flex-grow: 1; /* Expand to fill available space */
+  width: 90%; /* Use 90% of the width */
+  max-width: 1200px; /* But not more than 1200px */
+  text-align: center; /* Center align text */
 }
 
-/* Footer */
+/* Footer styles */
 footer {
-  width: 100%; /* Full width */
-  text-align: center; /* Center text/content */
- /* make footer appear right below last element without floxbox */
-  margin-bottom: auto; /* Pushes footer to the bottom */
-
-
-
-
-  padding: 10px 0; /* Adds space above and below footer */
+  margin-bottom: auto; /* Push to bottom */
+  padding: 10px 0; /* Padding above and below */
 }
 
-
-
+/* Heading styles */
 h1, h2 {
-  justify-content: center;
+  justify-content: center; /* Center headings */
 }
 
-/* Styling for main heading (h1) */
 h1 {
-  color: #333;
-  font-size: 2.5em; /* 40px */
+  color: #333; /* Dark grey color */
+  font-size: 2.5em; /* Large font size */
 }
 
-/* Styling for secondary heading (h2) */
 h2 {
-  color: #555;
-  font-size: 1.75em; /* 28px */
-  margin-bottom: 20px; /* Adds space below the heading */
+  color: #555; /* Medium grey color */
+  font-size: 1.75em; /* Medium font size */
+  margin-bottom: 20px; /* Space below heading */
 }
 
-/* Styling for paragraphs */
+/* Paragraph styles */
 p {
-  
-  padding: 15px;
-  border-radius: 8px;
-
-  line-height: 1.5;
-  font-size: 1em; /* 16px */
+  padding: 15px; /* Padding inside paragraphs */
+  border-radius: 8px; /* Rounded corners */
+  line-height: 1.5; /* Spacing between lines */
+  font-size: 1em; /* Default font size */
 }
 
-/* Additional styling for the first paragraph for emphasis */
 p:first-of-type {
-  font-weight: bold;
-  color: #444;
+  font-weight: bold; /* Bold for emphasis */
+  color: #444; /* Slightly darker grey */
 }
 
+/* Form group styling */
 .form-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 20px auto; /* Center the form */
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  width: 50%; /* Set the width to 50% */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  justify-content: center; /* Center vertically in the flex container */
+  margin: 20px auto; /* Center horizontally and add margin */
+  padding: 20px; /* Padding inside */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #f9f9f9; /* Light background */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+  width: 50%; /* Half width */
 }
 
- .form-group label {
-  display: block; /* Ensures labels take up their own line for clarity */
-  margin-bottom: 10px; /* Adds space below each label */
-  color: #333; /* Dark color for text for readability */
-  font-weight: bold; /* Makes label text slightly bolder */
+.form-group label {
+  display: block; /* Each label on its own line */
+  margin-bottom: 10px; /* Space below label */
+  color: #333; /* Dark grey text */
+  font-weight: bold; /* Bold text */
 }
 
 .form-group input, .form-group textarea, .form-group select {
-  padding: 10px; /* Adds padding inside input, textarea, and select elements */
-  margin-bottom: 20px; /* Adds space below each input, textarea, and select */
-  border: 1px solid #ccc; /* Adds a subtle border */
-  border-radius: 4px; /* Slightly rounds the corners */
-  width: calc(50% - 22px); /* Adjusts width to account for padding and border */
-  text-align: center;
+  padding: 10px; /* Padding inside fields */
+  margin-bottom: 20px; /* Space below fields */
+  border: 1px solid #ccc; /* Light grey border */
+  border-radius: 4px; /* Rounded corners */
+  width: calc(50% - 22px); /* Width minus padding and border */
+  text-align: center; /* Center text */
 }
 
 .form-group button {
-  padding: 10px 15px; /* Adds padding inside buttons */
-  background-color: #007bff; /* Sets a primary button color */
-  color: white; /* Sets button text color to white */
-  border: none; /* Removes border */
-  border-radius: 4px; /* Rounds button corners */
-  cursor: pointer; /* Changes cursor to pointer on hover */
-  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  padding: 10px 15px; /* Padding inside button */
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth color transition */
 }
 
 .form-group button:hover {
-  background-color: #0056b3; /* Darkens button color on hover for visual feedback */
+  background-color: #0056b3; /* Darker blue on hover */
 }
 
+/* Table container styling */
 .table-container {
-  margin: 20px 0;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Increased shadow for more depth */
-  overflow-x: auto;
+  margin: 20px 0; /* Margin above and below */
+  padding: 20px; /* Padding inside */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #f9f9f9; /* Light background */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Shadow for depth */
+  overflow-x: auto; /* Scroll horizontally if needed */
 }
 
+/* Table styling */
 table {
-  border-collapse: separate; /* Keep for spacing between rows */
-  border-spacing: 0; /* Remove space between rows for continuous border */
-  width: 100%;
-  background-color: white;
+  border-collapse: separate; /* Borders between cells */
+  border-spacing: 0; /* No space between cells */
+  width: 100%; /* Full width */
+  background-color: white; /* White background */
 }
 
 table th, table td {
-  text-align: center;
-  padding: 12px;
-  border-bottom: 1px solid #ccc; /* Existing bottom border */
-  border-right: 1px solid #ccc; /* Add similar right border to columns */
-  background-color: #ffffff; /* Ensures cell backgrounds are solid */
+  text-align: center; /* Center text */
+  padding: 12px; /* Padding inside cells */
+  border-bottom: 1px solid #ccc; /* Bottom border */
+  border-right: 1px solid #ccc; /* Right border */
+  background-color: #ffffff; /* White background */
 }
 
 table th {
-  background-color: #0066cc; /* Slightly different shade for more contrast */
-  color: white;
-  font-weight: bold;
-  position: sticky; /* Keeps the header at the top */
-  top: 0;
-  z-index: 2;
+  background-color: #0066cc; /* Blue header background */
+  color: white; /* White text */
+  font-weight: bold; /* Bold text */
+  position: sticky; /* Stick to top on scroll */
+  top: 0; /* Stick to top */
+  z-index: 2; /* Above other elements */
 }
 
-/* Use CSS :nth-of-type to style odd and even rows differently */
+/* Row styling */
 table tr:nth-of-type(odd) {
-  background-color: #f2f2f2; /* Lighter for odd rows */
+  background-color: #f2f2f2; /* Light grey for odd rows */
 }
 
 table tr:nth-of-type(even) {
-  background-color: #e6e6e6; /* Slightly darker for even rows */
+  background-color: #e6e6e6; /* Darker grey for even rows */
 }
 
 table tr:hover {
-  background-color: #d9d9d9; /* Universal hover state for better visibility */
+  background-color: #d9d9d9; /* Grey on hover */
 }
 
-/* Adjusted for more definition and visual separation */
-table td:first-child, table th:first-child {
-  border-left: 2px solid #0066cc; /* Consistent with header color */
-}
-
+/* First and last cell styling */
+table td:first-child, table th:first-child,
 table td:last-child, table th:last-child {
-  border-right: 2px solid #0066cc; /* Consistent with header color */
+  border-left: 2px solid #0066cc; /* Left border */
+  border-right: 2px solid #0066cc; /* Right border */
 }
 
-table td button {
-  padding: 5px 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+/* Button styling within table */
+table td button, .btn {
+  padding: 5px 10px; /* Padding inside button */
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth color transition */
 }
 
-table td button:hover {
-  background-color: #0056b3;
+table td button:hover, .btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }
 
-.btn {
-  padding: 5px 10px; /* Adjusts padding for buttons within table cells */
-  background-color: #007bff; /* Sets a primary button color */
-  color: white; /* Sets button text color to white */
-  border: none; /* Removes border */
-  border-radius: 4px; /* Rounds button corners */
-  cursor: pointer; /* Changes cursor to pointer on hover */
-  transition: background-color 0.3s ease; /* Smooth transition for background color */
-}
-
-.btn:hover {
-  background-color: #0056b3; /* Darkens button color on hover */
-}
-
-
-
+/* Slideshow container styling */
 .slideshow-container {
-  position: relative;
-  max-width: 600px; /* Adjust based on your preference */
-  margin: auto;
-  padding: 20px;
+  position: relative; /* Relative positioning */
+  max-width: 600px; /* Maximum width */
+  margin: auto; /* Center horizontally */
+  padding: 20px; /* Padding inside */
 }
 
+/* Slide styling */
 .slide {
-  display: none;
-  width: 100%; /* This makes the image stretch to the container's width */
-  height: auto; /* This maintains the aspect ratio */
+  display: none; /* Hide by default */
+  width: 100%; /* Full width */
+  height: auto; /* Maintain aspect ratio */
 }

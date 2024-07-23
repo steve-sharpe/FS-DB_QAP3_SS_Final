@@ -1,26 +1,21 @@
-var router = require('express').Router();
-const DEBUG = true;
+var router = require('express').Router(); // Import Express router
+const DEBUG = true; // Debug flag for logging
 
+// Log current route if DEBUG is true
 if(DEBUG) {
     console.log('ROUTE: /api/bands');
 }
 
-// this file is the route for the bands api
-
+// Import and use router for bands API
 const bandsRouter = require('./bands');
-router.use('/bands', bandsRouter);
+router.use('/bands', bandsRouter); // Route for handling bands
 
-// this file is the route for the bandsAdd api
-
+// Import and use router for bandsAdd API
 const bandsAddRouter = require('./bandsAdd');
-router.use('/bandsAdd', bandsAddRouter);
+router.use('/bandsAdd', bandsAddRouter); // Route for adding bands
 
-// this file is the route for the bandsEdit api
-
+// Import and use router for bandsEdit API
 const bandsEditRouter = require('./bandsEdit');
-router.use('/bandsEdit', bandsEditRouter);
+router.use('/bandsEdit', bandsEditRouter); // Route for editing bands
 
-
-
-
-module.exports = router;
+module.exports = router; // Export the router

@@ -1,3 +1,7 @@
+// QAP3 Database & Fullstack Development
+// Steve Sharpe 
+// July 23, 2024
+
 // Import necessary libraries
 const express = require('express');
 const methodOverride = require('method-override');

@@ -4,66 +4,68 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Edit Band</title>
-		
+		<!-- Additional head content can be added here (e.g., CSS links) -->
 	</head>
 	<body>
 		<div class="main-container">
+			<!-- Include head and navigation partials for consistent page layout -->
 			<%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
 			<div class="content">
 				<h1>EDIT BAND</h1>
-					<form action="/bands/<%= band.band_id %>?_method=PUT" method="POST">
-						<div class="form-group">
-							<label for="band_name">Band Name:</label>
-              <input
-                type="text"
-                id="band_name"
-                name="band_name"
-                value="<%= band.band_name %>"
-                required
-              />
+				<!-- Form for editing band details with pre-filled values -->
+				<form action="/bands/<%= band.band_id %>?_method=PUT" method="POST">
+					<div class="form-group">
+						<label for="band_name">Band Name:</label>
+						<input
+							type="text"
+							id="band_name"
+							name="band_name"
+							value="<%= band.band_name %>"
+							required
+						/>
 
-              <label for="band_singer">Band Singer:</label>
-              <input
-                type="text"
-                id="band_singer"
-                name="band_singer"
-                value="<%= band.band_singer %>"
-                required
-              />
+						<label for="band_singer">Band Singer:</label>
+						<input
+							type="text"
+							id="band_singer"
+							name="band_singer"
+							value="<%= band.band_singer %>"
+							required
+						/>
 
-              <label for="band_label">Band Label:</label>
-              <input
-                type="text"
-                id="band_label"
-                name="band_label"
-                value="<%= band.band_label %>"
-                required
-              />
+						<label for="band_label">Band Label:</label>
+						<input
+							type="text"
+							id="band_label"
+							name="band_label"
+							value="<%= band.band_label %>"
+							required
+						/>
 
-              <label for="number_albums">Number of Albums:</label>
-              <input
-                type="number"
-                id="number_albums"
-                name="number_albums"
-                value="<%= band.number_albums %>"
-                required
-              />
+						<label for="number_albums">Number of Albums:</label>
+						<input
+							type="number"
+							id="number_albums"
+							name="number_albums"
+							value="<%= band.number_albums %>"
+							required
+						/>
 
-              <label for="favourite_album">Favourite Album:</label>
-              <input
-                type="text"
-                id="favourite_album"
-                name="favourite_album"
-                value="<%= band.favourite_album %>"
-                required
-              />
-							<button type="submit">Update Band</button>
-						</div>
-					</form>
-          <%- include('./partials/foot.ejs') %>
-				</div>
+						<label for="favourite_album">Favourite Album:</label>
+						<input
+							type="text"
+							id="favourite_album"
+							name="favourite_album"
+							value="<%= band.favourite_album %>"
+							required
+						/>
+						<!-- Submit button for updating band details -->
+						<button type="submit">Update Band</button>
+					</div>
+				</form>
+				<!-- Include footer partial for consistent page layout -->
+				<%- include('./partials/foot.ejs') %>
 			</div>
 		</div>
 	</body>
-
 </html>

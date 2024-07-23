@@ -1,9 +1,14 @@
 <html lang="en">
 	<body>
 		<div class="main-container">
-			<%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
+			<!-- Include head partial -->
+			<%- include('./partials/head.ejs') %>
+			<!-- Include navigation partial -->
+			<%- include('./partials/nav.ejs') %>
 			<div class="content">
+				<!-- Page title -->
 				<h1>BANDS</h1>
+				<!-- Bands table -->
 				<table>
 					<thead>
 						<tr>
@@ -20,6 +25,7 @@
 						</tr>
 					</thead>
 					<tbody>
+						<!-- Loop through bands and display each band in a row -->
 						<% if (bands.length > 0) { bands.forEach(band => { %>
 						<tr>
 							<td><%= band.band_id %></td>
@@ -47,6 +53,7 @@
 						<% }) } %>
 					</tbody>
 				</table>
+				<!-- Include foot partial -->
 				<%- include('./partials/foot.ejs') %>
 			</div>
 		</div>

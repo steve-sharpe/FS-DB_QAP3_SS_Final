@@ -1,15 +1,20 @@
 <html lang="en">
 	<body>
 		<div class="main-container">
+			<!-- Include head and navigation partials -->
 			<%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
 			<div class="content">
+				<!-- Success message -->
 				<h1>The band has been added</h1>
 				<p>You will be redirected shortly.</p>
+				<!-- Include footer partial -->
 				<%- include('./partials/foot.ejs') %>
 			</div>
 
+			<!-- Redirect script -->
 			<script>
 				setTimeout(function () {
+					// Redirect to the bands list page after 3 seconds
 					window.location.href = '/bands'; // Adjust the path as needed
 				}, 3000); // 3000 milliseconds = 3 seconds
 			</script>

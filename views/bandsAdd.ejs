@@ -2,11 +2,15 @@
 <html lang="en">
 	<body>
 		<div class="main-container">
+			<!-- Include head and navigation partials -->
 			<%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
+			<!-- Page title -->
 			<h1>ADD BAND</h1>
 			<div class="content">
+				<!-- Band addition form -->
 				<form action="/band/" method="POST">
 					<div class="form-group">
+						<!-- Band name input -->
 						<label for="band_name">Band Name</label>
 						<input
 							type="text"
@@ -15,6 +19,7 @@
 							name="band_name"
 							placeholder="Enter band name"
 						/>
+						<!-- Singer name input -->
 						<label for="band_singer">Singer Name</label>
 						<input
 							type="text"
@@ -23,6 +28,7 @@
 							name="band_singer"
 							placeholder="Enter singer name"
 						/>
+						<!-- Label name input -->
 						<label for="band_label">Label Name</label>
 						<input
 							type="text"
@@ -31,6 +37,7 @@
 							name="band_label"
 							placeholder="Enter label name"
 						/>
+						<!-- Number of albums input -->
 						<label for="number_albums">Number of Albums</label>
 						<input
 							type="number"
@@ -39,6 +46,7 @@
 							name="number_albums"
 							placeholder="Enter number of albums"
 						/>
+						<!-- Favourite album input -->
 						<label for="favourite_album">Favourite Album</label>
 						<input
 							type="text"
@@ -47,9 +55,11 @@
 							name="favourite_album"
 							placeholder="Enter favourite album"
 						/>
+						<!-- Submit button -->
 						<button type="submit" class="btn btn-primary">Submit</button>
 					</div>
 				</form>
+				<!-- Include foot partial -->
 				<%- include('./partials/foot.ejs') %>
 			</div>
 		</div>
